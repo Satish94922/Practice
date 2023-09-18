@@ -33,7 +33,7 @@ const CardLayout = ({navigation,route}) => {
 
 
     const Data=[
-        {id:0,subject:'Mathematics',test:'Practice on 3D',name:'by Neha Agarwal'},
+        {id:0,subject:'Mathematics',test:'Practice on 3D',name:'by Neha Agarwal   '},
         {id:1,subject:'Chemistry',test:'Preparations and Reactions of Ether',name:'by Pahul preet singh gulati'},
         {id:2,subject:'physics',test:'Practice on 3D',name:'by Satish Karanam'},
         {id:3,subject:'English',test:'Preparation and Tasks on Grammer',name:'by Chaitanya Pasupuleti'},
