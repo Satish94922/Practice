@@ -1,9 +1,12 @@
-// import React,{useState,useEffect} from 'react';
-// import {LogBox,StatusBar } from 'react-native';
-// import { StackNav } from './components/StackNav';
-// import { NavigationContainer } from '@react-navigation/native';
-// import MaterialTopTabNav from './components/MaterialTopTabNav';
-// import Example from './components/Example';
+import React,{useState,useEffect} from 'react';
+import {LogBox,StatusBar } from 'react-native';
+import { StackNav } from './components/StackNav';
+import { NavigationContainer } from '@react-navigation/native';
+import MaterialTopTabNav from './components/MaterialTopTabNav';
+import Example from './components/Example';
+import NativeUsage from './native/NativeUsage';
+import MyCustom from './native/MyCustom';
+import { MyView } from './native/MyView';
 
 // const config={
 //   screens:{
@@ -49,21 +52,21 @@
 //   prefixes:['myapp://'],
 //   config
 // }
-// const App=()=> {
+const App=()=> {
 
 
-//   LogBox.ignoreAllLogs();
+  LogBox.ignoreAllLogs();
 
 
-//   return (
-//     <NavigationContainer linking={linking}>
-//       <StackNav/>
-//     </NavigationContainer>
+  return (
+    // <NativeUsage/>
 
-//   );
-// }
+    <MyView/>
 
-// export default App;
+  );
+}
+
+export default App;
 
 // import React from 'react';
 // import { Provider } from 'react-redux';
@@ -203,87 +206,7 @@
 
 // ProductList.js
 
-import React, { useEffect, useState} from 'react';
-import { View, Text, FlatList, ActivityIndicator, SectionList } from 'react-native';
-import axios from 'axios';
-import { StyleSheet } from 'react-native';
 
-const App = () => {
-  const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    fetchData();
-  }, [page]);
-
-  const fetchData = async () => {
-    setLoading(true)
-
-    try {
-      
-      const response = await axios.get(`https://jsonplaceholder.typicode.com/comments?_page=${page}`);
-      const newData = response.data;
-      
-      if (page === 1) {
-      
-        setProducts(newData);
-      } else {
-        
-        setProducts((prevProducts) => [...prevProducts, ...newData]);
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const loadMoreData = () => {
-    setPage(page + 1);
-
-  };
-
-  const MyListItem=React.memo(({item})=>{
-    return(
-      <View style={styles.productItem}>
-      <Text>{item.id}</Text>
-      <Text>{item.name}</Text>
-      <Text>{item.email}</Text>
-    </View>
-
-    )
-  })
-
-  return (
-    <View style={styles.container}>
-      <SectionList
-        sections={products}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <MyListItem item={item} />}
-        onEndReached={loadMoreData}
-        ListFooterComponent={!loading && <ActivityIndicator size="large" />}
-      />
-    </View>
-  );
-};
-
-const styles=StyleSheet.create({
-  container:{
-    justifyContent:'center',
-    alignItems:'center'
-    
-  },
-  productItem: {
-    padding: 16,
-    borderWidth: 1,
-    borderRadius:10,
-    width:"95%",
-    borderBottomColor: '#ccc',
-    margin:5
-  },
-})
-export default App;
 
 
 
