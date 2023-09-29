@@ -106,7 +106,7 @@ import NativeUsage from './native/NativeUsage'
 
 const App = () => {
   return (
-    <NativeUsage/>
+    <NativeUsage/> 
   )
 }
 
