@@ -16,6 +16,7 @@ import java.util.HashMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.Arguments;
+
 public class CalenderModule extends ReactContextBaseJavaModule{
     CalenderModule(ReactApplicationContext context){
         super(context);
@@ -27,18 +28,18 @@ public class CalenderModule extends ReactContextBaseJavaModule{
         return "CalenderModule";
     }
 
-//    @ReactMethod
-//    public void createCalenderEvent(String name,String location){
-//        Log.d("CalenderModule","Create event called with name:"+name
-//                +"and location:"+location);
-//    }
+   @ReactMethod
+   public void createCalenderEvent(String name,String location){
+       Log.d("CalenderModule","Create event called with name:"+name
+               +"and location:"+location);
+   }
 
     @Override
     public Map<String, Object> getConstants() {
         final Map<String, Object> constants = new HashMap<>();
         constants.put("DEFAULT_EVENT_NAME", "New Event");
         return constants;
-    }
+}
 
 //    @ReactMethod
 //    public void createCalenderEvent(String name, String location, Callback callBack) {
@@ -47,13 +48,19 @@ public class CalenderModule extends ReactContextBaseJavaModule{
 //    }
 
     @ReactMethod
-    public void createCalenderEvent(String name, String location, Promise promise) {
+    public void createCalenderEventWithPromise(String name,String location,Promise promise) {
         try {
             Integer eventId = 3;
-            promise.resolve(eventId);
+            String result="name = "+name+" Location = "+location+" Id = "+eventId;
+            promise.resolve(result);
+            
         } catch (Exception e) {
             promise.reject("Create Event Error", e);
         }
+
+
+
+        
     }
 
 
