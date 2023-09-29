@@ -68,37 +68,49 @@
 
 // export default App;
 
-import React from 'react';
-import { Provider } from 'react-redux';
-import Store from './redux/Store';
-import Todolist from './redux/Todolist';
-import Users from './redux/Users';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+// import React from 'react';
+// import { Provider } from 'react-redux';
+// import Store from './redux/Store';
+// import Todolist from './redux/Todolist';
+// import Users from './redux/Users';
+// import { createStackNavigator } from '@react-navigation/stack';
+// import { NavigationContainer } from '@react-navigation/native';
 
 
-function Home(){
-  return(
+// function Home(){
+//   return(
 
-      <Todolist/>
+//       <Todolist/>
+//   )
+// }
+
+// const Stack=createStackNavigator();
+// function App() {
+//   return (
+//     <Provider store={Store}>
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen name='Home' component={Home}/>
+//         <Stack.Screen name='Users' component={Users}/>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//     </Provider>
+//   );
+// }
+
+// export default App;
+
+import { View, Text } from 'react-native'
+import React from 'react'
+import NativeUsage from './native/NativeUsage'
+
+const App = () => {
+  return (
+    <NativeUsage/>
   )
 }
 
-const Stack=createStackNavigator();
-function App() {
-  return (
-    <Provider store={Store}>
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={Home}/>
-        <Stack.Screen name='Users' component={Users}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-    </Provider>
-  );
-}
-
-export default App;
+export default App
 
 
 
